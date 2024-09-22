@@ -8,7 +8,7 @@ async function DeviseList() {
 // recupération de l'api exenchange
     const data = await response.json();
 
-// initialisation des variables a mettre dans les devises
+// initialisation des variables a mettre dans les devisesstart et end
     const currencies = data.supported_codes;
     const deviseStart = document.getElementById("deviseStart");
     const deviseEnd = document.getElementById("deviseEnd");
@@ -24,7 +24,11 @@ async function DeviseList() {
       deviseend.value = currency[0];
       deviseend.text = currency[1];
       deviseEnd.add(deviseend);
-    })
+    });
+
+    // Ajouter des event listeners après que les options ont été chargées
+    deviseStart.addEventListener("change", convertCurrency);
+    deviseEnd.addEventListener("change", convertCurrency);
 }
 
 // Fetch conversion rate and calculate the conversion
